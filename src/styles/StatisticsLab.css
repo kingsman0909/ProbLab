@@ -1,0 +1,257 @@
+.statistics-page {
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+  background: #2d2e2d;
+  color: #e8eee9;
+}
+
+.statistics-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.statistics-header {
+  margin-bottom: 35px;
+}
+
+.statistics-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 25px;
+  color: #afc4b3;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.statistics-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.statistics-title-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(22, 73, 49, 0.8);
+  font-size: 26px;
+}
+
+.statistics-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #06b6d4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.statistics-title h1 {
+  margin: 0;
+  font-size: 42px;
+}
+
+.statistics-title p {
+  margin: 8px 0 0;
+  color: #afc4b3;
+}
+
+.statistics-card,
+.statistics-results,
+.statistics-learning {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(102, 101, 101, 0.35);
+  border-radius: 22px;
+}
+
+.statistics-card {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 30px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.statistics-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.statistics-input label {
+  color: #afc4b3;
+  font-size: 13px;
+}
+
+.statistics-input textarea {
+  width: 100%;
+  min-height: 130px;
+  box-sizing: border-box;
+  padding: 14px;
+  resize: vertical;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 11px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.statistics-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.statistics-calculate,
+.statistics-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.statistics-calculate {
+  background: #164931;
+  color: white;
+}
+
+.statistics-reset {
+  background: rgba(255, 255, 255, 0.08);
+  color: #afc4b3;
+}
+
+.statistics-result {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(22, 73, 49, 0.35);
+  text-align: center;
+}
+
+.statistics-result span {
+  color: #06b6d4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.statistics-result strong {
+  margin: 15px 0 5px;
+  font-size: 48px;
+}
+
+.statistics-result p {
+  margin: 0;
+  color: #afc4b3;
+}
+
+.statistics-results {
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.statistics-results-header h2 {
+  margin: 0 0 20px;
+}
+
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.statistics-stat {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.statistics-stat span {
+  display: block;
+  color: #afc4b3;
+  font-size: 13px;
+}
+
+.statistics-stat strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 28px;
+}
+
+.statistics-learning {
+  padding: 30px;
+}
+
+.statistics-learning h2 {
+  margin: 0 0 10px;
+}
+
+.statistics-learning > p {
+  max-width: 750px;
+  color: #afc4b3;
+  line-height: 1.7;
+}
+
+.statistics-formulas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.statistics-formulas div {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.statistics-formulas strong,
+.statistics-formulas span {
+  display: block;
+}
+
+.statistics-formulas strong {
+  margin-bottom: 8px;
+}
+
+.statistics-formulas span {
+  color: #afc4b3;
+}
+
+@media (max-width: 700px) {
+  .statistics-page {
+    padding: 25px 15px 60px;
+  }
+
+  .statistics-title h1 {
+    font-size: 32px;
+  }
+
+  .statistics-card {
+    grid-template-columns: 1fr;
+  }
+
+  .statistics-grid,
+  .statistics-formulas {
+    grid-template-columns: 1fr;
+  }
+
+  .statistics-result {
+    min-height: 200px;
+  }
+}

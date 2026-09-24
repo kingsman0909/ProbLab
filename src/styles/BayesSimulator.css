@@ -1,0 +1,217 @@
+.bayes-page {
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+  background: #2d2e2d;
+  color: #e8eee9;
+}
+
+.bayes-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.bayes-header {
+  margin-bottom: 35px;
+}
+
+.bayes-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 25px;
+  color: #afc4b3;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.bayes-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.bayes-title-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(22, 73, 49, 0.8);
+  font-size: 26px;
+}
+
+.bayes-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #06b6d4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.bayes-title h1 {
+  margin: 0;
+  font-size: 42px;
+}
+
+.bayes-title p {
+  margin: 8px 0 0;
+  color: #afc4b3;
+}
+
+.bayes-card,
+.bayes-learning {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(102, 101, 101, 0.35);
+  border-radius: 22px;
+}
+
+.bayes-card {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 30px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.bayes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bayes-form label {
+  color: #afc4b3;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.bayes-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 11px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+  font: inherit;
+}
+
+.bayes-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.bayes-calculate,
+.bayes-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.bayes-calculate {
+  background: #164931;
+  color: white;
+}
+
+.bayes-reset {
+  background: rgba(255, 255, 255, 0.08);
+  color: #afc4b3;
+}
+
+.bayes-result {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(22, 73, 49, 0.35);
+  text-align: center;
+}
+
+.bayes-result span {
+  color: #06b6d4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.bayes-result strong {
+  margin: 15px 0 5px;
+  font-size: 48px;
+}
+
+.bayes-result p {
+  margin: 0;
+  color: #afc4b3;
+}
+
+.bayes-learning {
+  padding: 30px;
+}
+
+.bayes-learning h2 {
+  margin: 0 0 10px;
+}
+
+.bayes-learning > p {
+  max-width: 750px;
+  color: #afc4b3;
+  line-height: 1.7;
+}
+
+.bayes-formula {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 25px 0;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.bayes-formula strong {
+  font-size: 24px;
+}
+
+.bayes-formula span {
+  color: #afc4b3;
+}
+
+.bayes-note {
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .bayes-page {
+    padding: 25px 15px 60px;
+  }
+
+  .bayes-title h1 {
+    font-size: 32px;
+  }
+
+  .bayes-card {
+    grid-template-columns: 1fr;
+  }
+
+  .bayes-result {
+    min-height: 220px;
+  }
+
+  .bayes-formula {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

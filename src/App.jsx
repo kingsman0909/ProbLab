@@ -5,6 +5,9 @@ import Homepage from "./components/Homepage";
 import DiceSimulator from "./pages/DiceSimulator";
 import CoinToss from './pages/CoinToss';
 import Probability from './pages/ProbabilityCalculator'
+import Conditional from './pages/ConditionalProbability';
+import Bayes from './pages/BayesSimulator';
+import Statistics from './pages/StatisticsLab';
 
 import "./App.css";
 
@@ -31,6 +34,21 @@ function App() {
         <Route
           path='/labs/probability'
           element={<Probability />}
+        />
+
+        <Route
+          path='/labs/conditional'
+          element={<Conditional />}
+        />
+
+        <Route
+          path='/labs/bayes'
+          element={<Bayes />}
+        />
+
+        <Route
+          path='/labs/statistics'
+          element={<Statistics />}
         />
         
 

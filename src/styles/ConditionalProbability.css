@@ -1,0 +1,217 @@
+.conditional-page {
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+  background: #2d2e2d;
+  color: #e8eee9;
+}
+
+.conditional-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.conditional-header {
+  margin-bottom: 35px;
+}
+
+.conditional-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 25px;
+  color: #afc4b3;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.conditional-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.conditional-title-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(22, 73, 49, 0.8);
+  font-size: 26px;
+}
+
+.conditional-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #06b6d4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.conditional-title h1 {
+  margin: 0;
+  font-size: 42px;
+}
+
+.conditional-title p {
+  margin: 8px 0 0;
+  color: #afc4b3;
+}
+
+.conditional-card,
+.conditional-learning {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(102, 101, 101, 0.35);
+  border-radius: 22px;
+}
+
+.conditional-card {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 30px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.conditional-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.conditional-form label {
+  color: #afc4b3;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.conditional-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 11px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+  font: inherit;
+}
+
+.conditional-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.conditional-calculate,
+.conditional-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.conditional-calculate {
+  background: #164931;
+  color: white;
+}
+
+.conditional-reset {
+  background: rgba(255, 255, 255, 0.08);
+  color: #afc4b3;
+}
+
+.conditional-result {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(22, 73, 49, 0.35);
+  text-align: center;
+}
+
+.conditional-result span {
+  color: #06b6d4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.conditional-result strong {
+  margin: 15px 0 5px;
+  font-size: 48px;
+}
+
+.conditional-result p {
+  margin: 0;
+  color: #afc4b3;
+}
+
+.conditional-learning {
+  padding: 30px;
+}
+
+.conditional-learning h2 {
+  margin: 0 0 10px;
+}
+
+.conditional-learning > p {
+  max-width: 750px;
+  color: #afc4b3;
+  line-height: 1.7;
+}
+
+.conditional-formula {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 25px 0;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.conditional-formula strong {
+  font-size: 24px;
+}
+
+.conditional-formula span {
+  color: #afc4b3;
+}
+
+.conditional-note {
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .conditional-page {
+    padding: 25px 15px 60px;
+  }
+
+  .conditional-title h1 {
+    font-size: 32px;
+  }
+
+  .conditional-card {
+    grid-template-columns: 1fr;
+  }
+
+  .conditional-result {
+    min-height: 220px;
+  }
+
+  .conditional-formula {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
