@@ -11,6 +11,9 @@ function LabCard({
   path
 }) {
   return (
+    <Link
+        to={path}
+      >
     <article className="tool-card">
 
       <div className="tool-top">
@@ -42,6 +45,7 @@ function LabCard({
       </Link>
 
     </article>
+    </Link>
   );
 }
 

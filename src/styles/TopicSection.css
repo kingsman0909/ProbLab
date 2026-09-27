@@ -1,0 +1,730 @@
+
+/* =========================================
+   TOPICS SECTION
+========================================= */
+
+.topics-section {
+  position: relative;
+  width: 100%;
+  padding: 100px 6%;
+  box-sizing: border-box;
+  background: #2d2e2d;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.topics-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.section-label {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #06b6d4;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.topics-content h2 {
+  margin: 0 0 20px;
+  color: #ffffff;
+  font-size: clamp(30px, 5vw, 55px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.topics-content h2 span {
+  color: #06b6d4;
+}
+
+.topics-content p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #afc4b3;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   TOPIC LIST
+========================================= */
+
+.topic-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.topic-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  width: 100%;
+  min-height: 85px;
+  padding: 22px 25px;
+
+  background: #3a3d3a;
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  box-sizing: border-box;
+}
+
+.topic-item:hover {
+  background: #424742;
+  border-color: rgba(6, 182, 212, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.topic-item.active {
+  background: #164931;
+  border-color: #06b6d4;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.12);
+}
+
+.topic-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  background: rgba(6, 182, 212, 0.12);
+  color: #06b6d4;
+
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 12px;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.topic-item strong {
+  flex: 1;
+  min-width: 0;
+
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.topic-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 30px;
+  height: 30px;
+
+  color: #06b6d4;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+
+/* =========================================
+   LESSON MODAL OVERLAY
+========================================= */
+
+.topic-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.78);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* =========================================
+   LESSON MODAL CONTENT
+========================================= */
+
+.topic-reading {
+  position: relative;
+
+  width: 100%;
+  max-width: 850px;
+
+  max-height: 85vh;
+  max-height: 85dvh;
+
+  margin: 0;
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  background: #202523;
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+
+  animation: modalAppear 0.3s ease;
+}
+
+
+/* Custom scrollbar */
+
+.topic-reading::-webkit-scrollbar {
+  width: 8px;
+}
+
+.topic-reading::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 15px 0;
+}
+
+.topic-reading::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.topic-reading::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
+
+
+/* Firefox scrollbar */
+
+.topic-reading {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+
+/* =========================================
+   CLOSE LESSON BUTTON
+========================================= */
+
+.close-reading {
+  position: sticky;
+  top: 0;
+
+  z-index: 10;
+
+  display: block;
+  margin: 0 0 30px auto;
+
+  padding: 12px 18px;
+
+  background: #292e2b;
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.close-reading:hover {
+  background: #164931;
+  border-color: #06b6d4;
+}
+
+.close-reading:active {
+  transform: scale(0.96);
+}
+
+
+/* =========================================
+   LESSON TITLE AND DESCRIPTION
+========================================= */
+
+.topic-reading > .section-label {
+  margin-bottom: 15px;
+}
+
+.topic-reading > h2 {
+  margin: 0 0 20px;
+
+  color: #ffffff;
+
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.25;
+
+  overflow-wrap: break-word;
+}
+
+.lesson-description {
+  margin: 0 0 35px;
+
+  color: #afc4b3;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   FORMULA BOX
+========================================= */
+
+.lesson-formula {
+  margin: 25px 0 35px;
+  padding: 25px;
+
+  background: rgba(6, 182, 212, 0.07);
+
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-left: 4px solid #06b6d4;
+  border-radius: 16px;
+}
+
+.lesson-formula h3 {
+  margin: 0 0 15px;
+
+  color: #06b6d4;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.lesson-formula pre {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Courier New", monospace;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.8;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   LESSON SECTIONS
+========================================= */
+
+.lesson-section {
+  margin: 30px 0;
+}
+
+.lesson-section h3 {
+  margin: 0 0 12px;
+
+  color: #06b6d4;
+
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.lesson-section p {
+  margin: 0;
+
+  color: #d0d8d2;
+
+  font-size: 16px;
+  line-height: 1.9;
+
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================
+   EXAMPLE / SOLUTION
+========================================= */
+
+.lesson-example {
+  margin: 35px 0;
+  padding: 25px;
+
+  background: rgba(22, 73, 49, 0.25);
+
+  border: 1px solid rgba(22, 73, 49, 0.8);
+  border-radius: 16px;
+}
+
+.lesson-example h3 {
+  margin: 0 0 15px;
+
+  color: #8de0a8;
+
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.lesson-example pre {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  line-height: 1.9;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   KEY TAKEAWAYS
+========================================= */
+
+.lesson-keypoints {
+  margin: 35px 0;
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.lesson-keypoints h3 {
+  margin: 0 0 20px;
+
+  color: #06b6d4;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.lesson-keypoints ul {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.lesson-keypoints li {
+  position: relative;
+
+  padding-left: 30px;
+
+  color: #d0d8d2;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.lesson-keypoints li::before {
+  content: "✓";
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  color: #06b6d4;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   PREVIOUS / NEXT NAVIGATION
+========================================= */
+
+.lesson-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-top: 40px;
+  padding-top: 25px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.lesson-navigation button {
+  padding: 13px 22px;
+
+  background: #164931;
+  color: #ffffff;
+
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.lesson-navigation button:hover:not(:disabled) {
+  background: #206640;
+  border-color: #06b6d4;
+  transform: translateY(-2px);
+}
+
+.lesson-navigation button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.lesson-navigation button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.lesson-navigation span {
+  color: #afc4b3;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   MODAL ANIMATION
+========================================= */
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .topics-section {
+    padding: 75px 5%;
+  }
+
+  .topics-content {
+    margin-bottom: 35px;
+  }
+
+  .topic-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .topic-item {
+    min-height: 75px;
+    padding: 18px 20px;
+  }
+
+  .topic-modal-overlay {
+    padding: 15px;
+  }
+
+  .topic-reading {
+    max-height: 90vh;
+    max-height: 90dvh;
+    padding: 30px;
+    border-radius: 20px;
+  }
+
+  .lesson-section h3 {
+    font-size: 19px;
+  }
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 480px) {
+  .topics-section {
+    padding: 60px 18px;
+  }
+
+  .topics-content h2 {
+    font-size: 30px;
+  }
+
+  .topics-content p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .topic-item {
+    gap: 12px;
+    min-height: 70px;
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  .topic-number {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .topic-item strong {
+    font-size: 14px;
+  }
+
+  .topic-modal-overlay {
+    padding: 10px;
+  }
+
+  .topic-reading {
+    width: 100%;
+    max-height: 92vh;
+    max-height: 92dvh;
+
+    padding: 22px 18px;
+
+    border-radius: 18px;
+  }
+
+  .close-reading {
+    margin-bottom: 25px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .topic-reading > h2 {
+    font-size: 27px;
+  }
+
+  .lesson-description {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .lesson-formula,
+  .lesson-example,
+  .lesson-keypoints {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .lesson-formula pre,
+  .lesson-example pre {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .lesson-section h3 {
+    font-size: 18px;
+  }
+
+  .lesson-section p,
+  .lesson-keypoints li {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .lesson-navigation {
+    gap: 10px;
+  }
+
+  .lesson-navigation button {
+    padding: 11px 13px;
+    font-size: 12px;
+  }
+
+  .lesson-navigation span {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 360px) {
+  .topic-reading {
+    padding: 18px 14px;
+  }
+
+  .topic-reading > h2 {
+    font-size: 24px;
+  }
+
+  .lesson-navigation {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .lesson-navigation span {
+    order: -1;
+    width: 100%;
+    text-align: center;
+  }
+}
