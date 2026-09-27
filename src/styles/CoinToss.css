@@ -234,3 +234,138 @@
     overflow-x: auto;
   }
 }
+
+
+
+/* 3D coin container */
+.coin-scene {
+  width: 220px;
+  height: 220px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  perspective: 1000px;
+
+  margin: 20px auto;
+}
+
+.coin-3d {
+  width: 150px;
+  height: 150px;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+
+  transition: transform 1.5s
+    cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+/* Heads and tails */
+.coin-side {
+  position: absolute;
+
+  inset: 0;
+
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  box-sizing: border-box;
+
+  border: 7px solid #b8860b;
+
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff2a6,
+    #e8b923 50%,
+    #b8860b 100%
+  );
+
+  color: #684400;
+
+  backface-visibility: hidden;
+
+  box-shadow:
+    inset 0 0 0 3px #ffdf65,
+    inset 0 0 15px rgba(100, 60, 0, 0.4);
+}
+
+.coin-side span {
+  font-size: 58px;
+  font-weight: 900;
+
+  line-height: 1;
+}
+
+.coin-side small {
+  margin-top: 8px;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+/* Heads faces the viewer initially */
+.coin-heads {
+  transform: translateZ(8px);
+}
+
+/* Tails is on the opposite side */
+.coin-tails {
+  transform: rotateY(180deg) translateZ(8px);
+}
+
+/* Thin coin edge */
+.coin-edge {
+  position: absolute;
+
+  width: 150px;
+  height: 16px;
+
+  top: 50%;
+  left: 0;
+
+  transform: translateY(-50%) rotateX(90deg);
+
+  border-radius: 50%;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #b8860b 0px,
+    #ffdf65 3px,
+    #b8860b 6px
+  );
+
+  backface-visibility: hidden;
+}
+
+/* Button animation */
+.flip-button {
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.flip-button:active {
+  transform: scale(0.95);
+}
+
+.flip-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.coin-reset:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

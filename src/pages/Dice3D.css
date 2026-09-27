@@ -1,0 +1,76 @@
+.dice-scene {
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  perspective: 800px;
+}
+
+.dice-cube {
+  position: relative;
+
+  width: 100px;
+  height: 100px;
+
+  transform-style: preserve-3d;
+
+  transition: transform 1.2s cubic-bezier(
+    0.25,
+    0.8,
+    0.25,
+    1
+  );
+}
+
+.dice-face {
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  background: white;
+  border: 2px solid #164931;
+  border-radius: 12px;
+
+  color: #164931;
+  font-size: 36px;
+  font-weight: 800;
+
+  backface-visibility: hidden;
+}
+
+.face-1 {
+  transform: translateZ(50px);
+}
+
+.face-2 {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.face-3 {
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.face-4 {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+.face-5 {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.face-6 {
+  transform: rotateY(180deg) translateZ(50px);
+}

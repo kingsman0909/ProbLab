@@ -1,21 +1,36 @@
-import React, { useState } from "react";
-import { FaDice, FaArrowLeft, FaRedo } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
+import React, { useState } from "react";
+import Dice3D from "./Dice3D";
+
+import {
+  FaDice,
+  FaArrowLeft,
+  FaRedo
+} from "react-icons/fa";
+
+import { Link } from "react-router-dom";
 import "../styles/DiceSimulator.css";
 
 function DiceSimulator() {
   const [rolls, setRolls] = useState([]);
   const [currentRoll, setCurrentRoll] = useState(null);
+  const [isRolling, setIsRolling] = useState(false);
 
-  const rollDice = () => {
-    const result = Math.floor(Math.random() * 6) + 1;
-
+  // Called when Dice3D finishes its animation
+  const handleRollComplete = (result) => {
     setCurrentRoll(result);
-    setRolls((prev) => [...prev, result]);
+
+    setRolls((prev) => [
+      ...prev,
+      result
+    ]);
+
+    setIsRolling(false);
   };
 
   const resetSimulation = () => {
+    if (isRolling) return;
+
     setRolls([]);
     setCurrentRoll(null);
   };
@@ -23,30 +38,31 @@ function DiceSimulator() {
   const totalRolls = rolls.length;
 
   const getCount = (number) => {
-    return rolls.filter((roll) => roll === number).length;
+    return rolls.filter(
+      (roll) => roll === number
+    ).length;
   };
 
   const getExperimentalProbability = (number) => {
-    if (totalRolls === 0) return 0;
+    if (totalRolls === 0) return "0.0";
 
-    return ((getCount(number) / totalRolls) * 100).toFixed(1);
+    return (
+      (getCount(number) / totalRolls) * 100
+    ).toFixed(1);
   };
 
   return (
     <main className="dice-page">
-
       <div className="dice-container">
 
         {/* Header */}
         <header className="dice-header">
-
           <Link to="/" className="dice-back">
             <FaArrowLeft />
             <span>Back to Labs</span>
           </Link>
 
           <div className="dice-title">
-
             <div className="dice-title-icon">
               <FaDice />
             </div>
@@ -63,11 +79,8 @@ function DiceSimulator() {
                 with theoretical probability.
               </p>
             </div>
-
           </div>
-
         </header>
-
 
         {/* Simulator */}
         <section className="dice-simulator">
@@ -78,20 +91,35 @@ function DiceSimulator() {
               CURRENT ROLL
             </span>
 
-            <div className="dice-face">
-              {currentRoll || "?"}
+            {/* Dice3D handles the animation and result */}
+            <div className="dice-3d-wrapper">
+              <Dice3D
+                rolling={isRolling}
+                onRollComplete={handleRollComplete}
+              />
             </div>
 
+            {/* Result returned by Dice3D */}
+            <div className="dice-result-number">
+              {isRolling
+                ? "Rolling..."
+                : currentRoll !== null
+                  ? `You rolled a ${currentRoll}!`
+                  : "Roll the dice to begin"}
+            </div>
+
+            {/* Only Roll Dice button */}
             <button
               className="roll-button"
-              onClick={rollDice}
+              onClick={() => setIsRolling(true)}
+              disabled={isRolling}
             >
               <FaDice />
-              Roll Dice
+
+              {isRolling ? "Rolling..." : "Roll Dice"}
             </button>
 
           </div>
-
 
           {/* Stats */}
           <div className="dice-stats">
@@ -114,15 +142,12 @@ function DiceSimulator() {
             </div>
 
           </div>
-
         </section>
-
 
         {/* Results */}
         <section className="dice-results">
 
           <div className="results-header">
-
             <div>
               <span className="dice-label">
                 PROBABILITY RESULTS
@@ -134,13 +159,12 @@ function DiceSimulator() {
             <button
               className="reset-button"
               onClick={resetSimulation}
+              disabled={isRolling}
             >
               <FaRedo />
               Reset
             </button>
-
           </div>
-
 
           <div className="probability-table">
 
@@ -174,9 +198,7 @@ function DiceSimulator() {
             ))}
 
           </div>
-
         </section>
-
 
         {/* Explanation */}
         <section className="dice-learning">
@@ -195,6 +217,7 @@ function DiceSimulator() {
 
           <div className="formula">
             Experimental Probability =
+
             <span>
               Number of favorable outcomes
               <br />
@@ -214,7 +237,6 @@ function DiceSimulator() {
         </section>
 
       </div>
-
     </main>
   );
 }

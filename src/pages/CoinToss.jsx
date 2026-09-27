@@ -1,49 +1,98 @@
-import React, { useState } from "react";
-import { FaCoins, FaArrowLeft, FaRedo } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
+import React, { useState } from "react";
+import {
+  FaCoins,
+  FaArrowLeft,
+  FaRedo
+} from "react-icons/fa";
+
+import { Link } from "react-router-dom";
 import "../styles/CoinToss.css";
 
 function CoinToss() {
   const [results, setResults] = useState([]);
   const [currentResult, setCurrentResult] = useState(null);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [rotation, setRotation] = useState(0);
 
   const flipCoin = () => {
-    const result = Math.random() < 0.5 ? "Heads" : "Tails";
+    if (isFlipping) return;
 
-    setCurrentResult(result);
-    setResults((prev) => [...prev, result]);
+    setIsFlipping(true);
+
+    // Generate the result
+    const result =
+      Math.random() < 0.5 ? "Heads" : "Tails";
+
+    // Heads = 0 degrees, Tails = 180 degrees
+    const finalRotation =
+      result === "Heads" ? 0 : 180;
+
+    // Add multiple full rotations before landing
+    const currentRotation = rotation;
+    const fullSpins = 5 * 360;
+
+    const normalizedRotation =
+      Math.ceil(currentRotation / 360) * 360;
+
+    const targetRotation =
+      normalizedRotation +
+      fullSpins +
+      finalRotation;
+
+    setRotation(targetRotation);
+
+    // Wait until animation finishes
+    setTimeout(() => {
+      setCurrentResult(result);
+
+      setResults((prev) => [
+        ...prev,
+        result
+      ]);
+
+      setIsFlipping(false);
+    }, 1500);
   };
 
   const resetSimulation = () => {
+    if (isFlipping) return;
+
     setResults([]);
     setCurrentResult(null);
+    setRotation(0);
   };
 
   const totalFlips = results.length;
-  const heads = results.filter((result) => result === "Heads").length;
-  const tails = results.filter((result) => result === "Tails").length;
+
+  const heads = results.filter(
+    (result) => result === "Heads"
+  ).length;
+
+  const tails = results.filter(
+    (result) => result === "Tails"
+  ).length;
 
   const getProbability = (count) => {
-    if (totalFlips === 0) return 0;
+    if (totalFlips === 0) return "0.0";
 
-    return ((count / totalFlips) * 100).toFixed(1);
+    return (
+      (count / totalFlips) * 100
+    ).toFixed(1);
   };
 
   return (
     <main className="coin-page">
-
       <div className="coin-container">
 
+        {/* Header */}
         <header className="coin-header">
-
           <Link to="/" className="coin-back">
             <FaArrowLeft />
             <span>Back to Labs</span>
           </Link>
 
           <div className="coin-title">
-
             <div className="coin-title-icon">
               <FaCoins />
             </div>
@@ -59,37 +108,60 @@ function CoinToss() {
                 Flip a coin and observe experimental probability.
               </p>
             </div>
-
           </div>
-
         </header>
 
-
+        {/* Simulator */}
         <section className="coin-simulator">
 
           <span className="coin-display-label">
             CURRENT RESULT
           </span>
 
-          <div className="coin-face">
-            {currentResult ? currentResult.charAt(0) : "?"}
+          {/* 3D Coin */}
+          <div className="coin-scene">
+            <div
+              className="coin-3d"
+              style={{
+                transform: `rotateY(${rotation}deg)`
+              }}
+            >
+              {/* Heads */}
+              <div className="coin-side coin-heads">
+                <span>H</span>
+                <small>HEADS</small>
+              </div>
+
+              {/* Tails */}
+              <div className="coin-side coin-tails">
+                <span>T</span>
+                <small>TAILS</small>
+              </div>
+
+              {/* Coin edge */}
+              <div className="coin-edge" />
+            </div>
           </div>
 
           <h2>
-            {currentResult || "Ready to flip"}
+            {isFlipping
+              ? "Flipping..."
+              : currentResult || "Ready to flip"}
           </h2>
 
           <button
             className="flip-button"
             onClick={flipCoin}
+            disabled={isFlipping}
           >
             <FaCoins />
-            Flip Coin
+
+            {isFlipping ? "Flipping..." : "Flip Coin"}
           </button>
 
         </section>
 
-
+        {/* Stats */}
         <section className="coin-stats">
 
           <div className="coin-stat">
@@ -111,11 +183,10 @@ function CoinToss() {
 
         </section>
 
-
+        {/* Probability Results */}
         <section className="coin-results">
 
           <div className="coin-results-header">
-
             <div>
               <span className="coin-label">
                 PROBABILITY RESULTS
@@ -127,11 +198,11 @@ function CoinToss() {
             <button
               className="coin-reset"
               onClick={resetSimulation}
+              disabled={isFlipping}
             >
               <FaRedo />
               Reset
             </button>
-
           </div>
 
           <div className="coin-table">
@@ -158,10 +229,9 @@ function CoinToss() {
             </div>
 
           </div>
-
         </section>
 
-
+        {/* Learning */}
         <section className="coin-learning">
 
           <span className="coin-label">
@@ -179,9 +249,7 @@ function CoinToss() {
 
         </section>
 
-
       </div>
-
     </main>
   );
 }
